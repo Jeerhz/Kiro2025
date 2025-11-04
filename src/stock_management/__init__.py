@@ -7,7 +7,12 @@ and other inventory optimization techniques.
 """
 
 from .models import Inventory, Order, Demand
-from .algorithms import EOQAlgorithm, ReorderPointAlgorithm, SafetyStockAlgorithm
+from .algorithms import (
+    EOQAlgorithm,
+    ReorderPointAlgorithm,
+    SafetyStockAlgorithm,
+    ABCAnalysisAlgorithm,
+)
 
 __version__ = "0.1.0"
 
@@ -18,4 +23,5 @@ __all__ = [
     "EOQAlgorithm",
     "ReorderPointAlgorithm",
     "SafetyStockAlgorithm",
+    "ABCAnalysisAlgorithm",
 ]
