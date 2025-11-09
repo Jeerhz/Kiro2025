@@ -8,13 +8,20 @@ The programming languages used are `Julia` and `Python`.
 
 Please install the programming languages before anything else.
 
-- Install version 3.14 of `Python` from [here](https://www.python.org/downloads/).
+- Install version 3.13 of `Python` from [here](https://www.python.org/downloads/).
 - Install the latest TLS version (June 2025) of `Julia` from [here](https://julialang.org/downloads/).
 
 For `Python`, we will likely use `uv`, as it is the fastest package manager I know for Python and has great features. Please install it from [here](https://uv.github.io/).
 
 We may need an optimization solver for the project (or not). The fastest one I know is Gurobi. You can get an academic license [here](https://www.gurobi.com/academia/academic-program-and-licenses/).
 The process is non-trivial, and you will need to connect to a school network (eduroam) to install the license on your machine.
+
+It is recommanded that we all use the same libraries for formatting:
+
+1. Julia Formatter for julia code formatting.
+2. Mypy, Ruff and Prettier for linting and code formating and typing check in Python
+
+The goal of hackathon is not to develop ready-to-production codebase but it can be annoying to have the code being linted in red with blocks movements after every `git pull`.
 
 # Install Dependencies
 
@@ -57,6 +64,7 @@ The first plan is then to implement in `Julia`:
 
 1. Parse the input files.
 
+- I recommand you to create a sandbox notebook so you can parse with pandas the json file to see how it is structured etc. Then you can use JSON and DataFrames Julia packages to load the inputs after you understand the structure. Create class and types corresponding to the main keys of the JSON so we have a code more readable. This is something GPT should be able to do.
 - We are given instances of different sizes to run our code. The priority is to have something functional.
 - We may sort data by time, handle missing values, create basic features like lags or rolling averages.
 
@@ -82,3 +90,5 @@ The second plan is to implement in `Python`:
 
 - Use a fast, robust model: LightGBM or XGBoost with default parameters.
 - Use a single time-series split for validation (TimeSeriesSplit) to avoid future leakage.
+
+# References
