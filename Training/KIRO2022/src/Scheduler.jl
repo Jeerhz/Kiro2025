@@ -94,6 +94,35 @@ function parse_instance(path::String)
 end
 
 # -------------------------
+# JSON solution I/O
+# -------------------------
+function write_solution_json(path::String, sol::Solution)
+	arr = Any[]
+	for e in sol
+		push!(arr, Dict(
+			"task" => e.task,
+			"start" => e.start,
+			"machine" => e.machine,
+			"operator" => e.operator,
+		))
+	end
+	open(path, "w") do io
+		JSON.print(io, arr)
+	end
+end
+
+function read_solution_json(path::String)
+	txt = read(path, String)
+	arr = JSON.parse(txt)
+	sol = SolEntry[]
+	for d in arr
+		push!(sol, SolEntry(d["task"], d["start"], d["machine"], d["operator"]))
+	end
+	return sol
+end
+
+
+# -------------------------
 # Helpers: interval utilities
 # intervals: Vector of (start,end) with end = exclusive (start..end-1)
 # -------------------------
@@ -359,34 +388,6 @@ function cost(inst::Instance, sol::Solution)
 	end
 
 	return (total, Cj, Uj, Tj)
-end
-
-# -------------------------
-# JSON solution I/O
-# -------------------------
-function write_solution_json(path::String, sol::Solution)
-	arr = Any[]
-	for e in sol
-		push!(arr, Dict(
-			"task" => e.task,
-			"start" => e.start,
-			"machine" => e.machine,
-			"operator" => e.operator,
-		))
-	end
-	open(path, "w") do io
-		JSON.print(io, arr)
-	end
-end
-
-function read_solution_json(path::String)
-	txt = read(path, String)
-	arr = JSON.parse(txt)
-	sol = SolEntry[]
-	for d in arr
-		push!(sol, SolEntry(d["task"], d["start"], d["machine"], d["operator"]))
-	end
-	return sol
 end
 
 # -------------------------
