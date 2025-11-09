@@ -2,7 +2,7 @@
 
 Operations Research Competition organized by the CERMICS laboratory and the company Califrais.
 
-# Pre-requirements
+## Pre-requirements
 
 The programming languages used are `Julia` and `Python`.
 
@@ -23,18 +23,25 @@ It is recommanded that we all use the same libraries for formatting:
 
 The goal of hackathon is not to develop ready-to-production codebase but it can be annoying to have the code being linted in red with blocks movements after every `git pull`.
 
-# Install Dependencies
+## Install Dependencies
 
 Do not waste time—please initialize the Python project with:
 
 ```bash
+cd kiro-2025-python
 uv venv .venv
-uv run <python_script.py>
+uv sync
 ```
 
 This will install heavy dependencies such as `torch`, so please do it before the Hackathon starts.
 
-Go to the Julia project folder and run:
+Go to the Julia project folder with:
+
+```bash
+cd kiro-2025-julia
+```
+
+and run:
 
 ```bash
 julia --project=. -e 'import Pkg; Pkg.instantiate()'
@@ -48,7 +55,7 @@ To run a Julia script, please run inside the Julia project folder:
 julia --project=. <relative_path_to_julia_script.jl> <args>
 ```
 
-# Plan for the Hackathon
+## Plan for the Hackathon
 
 You can find previous KIRO subjects [here](https://kiro.enpc.org).
 You can navigate to the Califrais website [here](https://www.califrais.fr/).
